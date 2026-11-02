@@ -176,6 +176,11 @@ export default function NetworkPage() {
         link.attr('stroke', '#2a2a2a').attr('stroke-opacity', 0.8)
         setTooltip(null)
       })
+      .on('click', (event, d) => {
+        const value = d.id.slice(d.id.indexOf(':') + 1)
+        const win = window.open(`https://github.com/${value}`, '_blank')
+        if (win) win.opener = null
+      })
 
     node.each(function (d) {
       const el = d3.select(this)
